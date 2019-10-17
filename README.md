@@ -1,4 +1,8 @@
 ## MailChimp.Net - A Mail Chimp 3.0 Wrapper
+[![Backers on Open Collective](https://opencollective.com/mailchimp/backers/badge.svg)](#backers)
+ [![Sponsors on Open Collective](https://opencollective.com/mailchimp/sponsors/badge.svg)](#sponsors) 
+
+
 
 ### License
 MailChimp.Net is licensed under the [MIT](https://github.com/brandonseydel/MailChimp.Net/blob/master/LICENSE.txt) license.
@@ -55,6 +59,30 @@ member.MergeFields.Add("FNAME", "HOLY");
 member.MergeFields.Add("LNAME", "COW");
 await this.mailChimpManager.Members.AddOrUpdateAsync(listId, member);
 ```
+
+##### Updating An Existing User
+
+```CSharp
+// Get reference to existing user if you don't already have it
+var listId = "TestListId";
+var members = await this.mailChimpManager.Members.GetAllAsync(listId).ConfigureAwait(false);
+var member = members.First(x => x.EmailAddress == "abc@def.com");
+
+// Update the user
+member.MergeFields.Add("FNAME", "New first name");
+member.MergeFields.Add("LNAME", "New last name");
+await this.mailChimpManager.Members.AddOrUpdateAsync(listId, member);
+```
+
+##### Adding/Removing a Tag From a User
+
+```CSharp
+Tags tags = new Tags();
+tags.MemberTags.Add(new Tag() { Name = "Awesome Person", Status = "active" });
+await this.mailChimpManager.Members.AddTagsAsync(listId, "abc@def.com", tags);
+```
+To remove the tag, use "inactive" as the Status.
+
 ### Status
 Progress on full implementation
 
@@ -102,3 +130,31 @@ Progress on full implementation
 
 
 Total **100%**
+
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/brandonseydel/MailChimp.Net/graphs/contributors"><img src="https://opencollective.com/mailchimp/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/mailchimp#backer)]
+
+<a href="https://opencollective.com/mailchimp#backers" target="_blank"><img src="https://opencollective.com/mailchimp/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/mailchimp#sponsor)]
+
+<a href="https://opencollective.com/mailchimp/sponsor/0/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/1/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/2/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/3/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/4/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/5/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/6/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/7/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/8/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/mailchimp/sponsor/9/website" target="_blank"><img src="https://opencollective.com/mailchimp/sponsor/9/avatar.svg"></a>

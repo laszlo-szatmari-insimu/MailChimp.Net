@@ -28,7 +28,7 @@ namespace MailChimp.Net.Interfaces
 		/// <returns>
 		/// The <see cref="Task"/>.
 		/// </returns>
-		Task<Member> AddOrUpdateAsync(string listId, Member member);
+		Task<Member> AddOrUpdateAsync(string listId, Member member, IList<MarketingPermissionText> marketingPermissions = null);
         
 	    /// <summary>
 	    /// Search the account or a specific list for members that match the specified query terms.
@@ -53,15 +53,28 @@ namespace MailChimp.Net.Interfaces
         /// </returns>
         Task DeleteAsync(string listId, string emailAddressOrHash);
 
+        /// <summary>
+        /// The permanent delete async.
+        /// </summary>
+        /// <param name="listId">
+        /// The list id.
+        /// </param>
+        /// <param name="emailAddressOrHash">
+        /// The email address.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
+        Task PermanentDeleteAsync(string listId, string emailAddressOrHash);
 
-		/// <summary>
-		/// Gets the activities for a specific list
-		/// </summary>
-		/// <param name="listId"></param>
-		/// <param name="emailAddressOrHash"></param>
-		/// <param name="request"></param>
-		/// <returns></returns>
-		Task<IEnumerable<Activity>> GetActivitiesAsync(string listId, string emailAddressOrHash, BaseRequest request = null);
+        /// <summary>
+        /// Gets the activities for a specific list
+        /// </summary>
+        /// <param name="listId"></param>
+        /// <param name="emailAddressOrHash"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<IEnumerable<Activity>> GetActivitiesAsync(string listId, string emailAddressOrHash, BaseRequest request = null);
 
 		/// <summary>
 		/// Gets the tags asynchronous.
@@ -71,6 +84,15 @@ namespace MailChimp.Net.Interfaces
 		/// <param name="request">The request.</param>
 		/// <returns></returns>
 		Task<IEnumerable<MemberTag>> GetTagsAsync(string listId, string emailAddressOrHash, BaseRequest request = null);
+
+        /// <summary>
+        /// Adds member tags asynchronous.
+        /// </summary>
+        /// <param name="listId">The list identifier.</param>
+        /// <param name="emailAddressOrHash">The email address or hash.</param>
+        /// <param name="request">The request.</param>
+        /// <returns></returns>
+        Task AddTagsAsync(string listId, string emailAddressOrHash, Tags tags, BaseRequest request = null);
 
         /// <summary>
         /// The get all async.

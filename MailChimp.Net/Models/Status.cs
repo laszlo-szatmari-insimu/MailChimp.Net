@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Status.cs" company="Brandon Seydel">
 //   N/A
 // </copyright>
@@ -13,6 +13,12 @@ namespace MailChimp.Net.Models
     /// </summary>
     public enum Status
     {
+        /// <summary>
+        /// The undefined.
+        /// </summary>
+        [Description("")]
+        Undefined,
+
         /// <summary>
         /// The subscribed.
         /// </summary>
@@ -37,15 +43,17 @@ namespace MailChimp.Net.Models
         [Description("pending")]
         Pending,
 
-
+        /// <summary>
+        /// Trajnsaction Member status
+        /// </summary>
         [Description("transactional")]
         Transactional,
-        
+
         /// <summary>
-        /// The undefined.
+        /// Archived member status
         /// </summary>
-        [Description("")]
-        Undefined
+        [Description("archived")]
+        Archived
 
     }
 }

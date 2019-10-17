@@ -1,4 +1,3 @@
-
 using System;
 using System.ComponentModel;
 
@@ -8,18 +7,18 @@ namespace MailChimp.Net.Core
     /// Sort order for sort_dir
     /// </summary>
     [Flags]
-    public enum CampaignSortOrder
+    public enum TemplateSortField
     {
         /// <summary>
-        /// ASC
+        /// The send time.
         /// </summary>
-        [Description("ASC")]
-        ASC = 1,
-        /// <summary>
-        /// ASC
-        /// </summary>
-        [Description("DESC")]
-        DESC = 2
-    }
+        [Description("date_created")]
+        DateCreated = 1,
 
+        /// <summary>
+        /// The send time.
+        /// </summary>
+        [Description("name")]
+        Name = 2
+    }
 }

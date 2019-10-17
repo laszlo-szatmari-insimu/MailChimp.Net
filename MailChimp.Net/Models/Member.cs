@@ -20,6 +20,7 @@ namespace MailChimp.Net.Models
 		public Member()
 		{
 			MergeFields = new Dictionary<string, object>();
+			MarketingPermissions = new List<MarketingPermission>();
 			Links = new List<Link>();
 			Interests = new Dictionary<string, bool>();
 			Status = Status.Undefined;
@@ -100,6 +101,12 @@ namespace MailChimp.Net.Models
 		public Location Location { get; set; }
 
 		/// <summary>
+		/// Gets or sets the marketing permissions.
+		/// </summary>
+		[JsonProperty("marketing_permissions")]
+		public IEnumerable<MarketingPermission> MarketingPermissions { get; set; }
+
+		/// <summary>
 		/// Gets or sets the member rating.
 		/// </summary>
 		[JsonProperty("member_rating")]
@@ -121,6 +128,7 @@ namespace MailChimp.Net.Models
 		/// Gets or sets the tags.
 		/// </summary>
 		[JsonProperty("tags")]
+        [JsonConverter(typeof(MemberTagListJsonConverter))] // This converted is used to serialize the tag list to a simple array of strings for PUT/POST requests
 		public List<MemberTag> Tags { get; set; }
 
 		/// <summary>
@@ -172,5 +180,11 @@ namespace MailChimp.Net.Models
 		/// </summary>
 		[JsonProperty("vip")]
 		public bool Vip { get; set; }
-	}
+
+        /// <summary>
+        /// Gets the ID used in the Mailchimp web application. <para>View this member in your Mailchimp account at https://{dc}.admin.mailchimp.com/lists/members/view?id={web_id}.</para>
+        /// </summary>
+        [JsonProperty("web_id")]
+        public int WebId { get; set; }
+    }
 }
